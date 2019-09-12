@@ -31,11 +31,20 @@ public class FactController {
     @Autowired
     private FactService factService;
 
+    /**
+     * <a href="http://localhost:8080/fact/getAll">Rest API Request getAll </a>
+     * @return
+     */
     @RequestMapping("/fact/getAll")
     public List<Fact> getAll() {
         return factService.getAll();
     }
 
+    /**
+     * <a href="http://localhost:8080/fact/create?text=Do or Not Do There Is No Try">Rest API Request Post (create)</a>
+     * @param text
+     * @return
+     */
     @RequestMapping("/fact/create")
     public Fact create(@RequestParam String text) {
         LocalDate createdOn = LocalDate.now();
