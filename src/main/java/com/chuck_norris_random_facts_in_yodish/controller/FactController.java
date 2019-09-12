@@ -50,5 +50,4 @@ public class FactController {
         LocalDate createdOn = LocalDate.now();
         return factService.create(text, createdOn);
     }
-
 }
