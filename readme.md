@@ -50,6 +50,7 @@
     spring.data.mongodb.uri=mongodb://username:password@host:port/database_name
 
 ## Step 2: Build Angular client
+### Setup angular client
     * go to the projects main folder
       e.g. D:/JavaProjects/IdeaProjects/chuck_norris_random_facts_in_yodish
     * Write command-line and run NG command to create the client:
@@ -58,7 +59,19 @@
       cd client
     * Write command to creat some more Angular material:
       npm install --save @angular/material @angular/cdk
-      
+
+### Generate ***fact*** service that talks to the API
+    * Use Angular CLI to generate "fact: service ("g" is short for "generate" and "s" is short for "service")
+      ng g s fact 
+    * Under "client/src/app" forlder create forlders: "shared/fact"
+      mkdir -p  src/app/shared/fact
+    * Move the created fact service files from "client/src/app" to "shared/fact" folder.
+      move src/app/fact.service.* src/app/shared/fact/.
+
+### Code ***fact*** service
+    
+
+    
 ## Step 3: Create Angular client page with 2 tabs according to requirements.
     * Call GET request to receive Chuck Norris random fact.
     * When receiving random fact, call GET request to translate random fact to Yodish.
