@@ -67,7 +67,10 @@
       mkdir -p  src/app/shared/fact
     * Move the created fact service files from "client/src/app" to "shared/fact" folder.
       move src/app/fact.service.* src/app/shared/fact/.
-
+    * Generate "fact-list" component to display the list of facts
+      ng g c fact-list
+        
+    
 ### Code ***fact*** service
     
 
