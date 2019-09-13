@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CarService } from '../share/fact/ca'
 import { FactService } from '../shared/fact/fact.service';
 
 @Component({
@@ -14,7 +13,7 @@ export class FactListComponent implements OnInit {
 
 
   ngOnInit() {
-    this.carService.getAll().subscribe(data => {
+    this.factService.getAll().subscribe(data => {
       this.facts = data;
     });
   }
