@@ -3,6 +3,7 @@ package com.chuck_norris_random_facts_in_yodish.controller;
 import com.chuck_norris_random_facts_in_yodish.model.Fact;
 import com.chuck_norris_random_facts_in_yodish.service.FactService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,19 +33,27 @@ public class FactController {
     private FactService factService;
 
     /**
+     * Annotation {@code @CrossOrigin} allows to access one server from another,
+     * e.g. accessing Java + Spring Boot + MongoDB server running on <a href="localhost:8080">local Host port 8080</a>
+     * from angular that runs on <a href="localhost:4200">Local Host Port 4200</a>.
      * <a href="http://localhost:8080/fact/getAll">Rest API Request getAll </a>
      * @return
      */
+    @CrossOrigin
     @RequestMapping("/fact/getAll")
     public List<Fact> getAll() {
         return factService.getAll();
     }
 
     /**
+     * Annotation {@code @CrossOrigin} allows to access one server from another,
+     * e.g. accessing Java + Spring Boot + MongoDB server running on <a href="localhost:8080">local Host port 8080</a>
+     * from angular that runs on <a href="localhost:4200">Local Host Port 4200</a>.
      * <a href="http://localhost:8080/fact/create?text=Do or Not Do There Is No Try">Rest API Request Post (create)</a>
      * @param text
      * @return
      */
+    @CrossOrigin
     @RequestMapping("/fact/create")
     public Fact create(@RequestParam String text) {
         LocalDate createdOn = LocalDate.now();
