@@ -59,4 +59,10 @@ public class FactController {
         LocalDate createdOn = LocalDate.now();
         return factService.create(text, createdOn);
     }
+
+    @CrossOrigin
+    @RequestMapping("/fact/createDemo")
+    public String createDemo(@RequestParam String text) {
+        return text;
+    }
 }

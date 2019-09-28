@@ -1,3 +1,38 @@
+<style>
+  table, th, td {
+    border: 1px solid black;
+  }
+
+  table {
+    width: 90%;
+    border-collapse: collapse;
+  }
+
+  th {
+    50px;
+  }
+</style>
+
+<h2>Get Request (https://jsonplaceholder.typicode.com/posts/1/comments)</h2>
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Post Id</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Body</th>
+  </tr>
+  <tr *ngFor="let com of lstcomments">
+    <td>{{com.id}}</td>
+    <td>{{com.postId}}</td>
+    <td>{{com.name}}</tc>
+    <td>{{com.email}}</td>
+    <td>{{com.body}}</td>
+  </tr>
+</table>
+
+
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align: center">
   <img width="300" alt="chuck norris" src="images/chucknorris.png"/>
@@ -17,18 +52,3 @@
     <app-fact-list></app-fact-list>
   </mat-tab>
 </mat-tab-group>
-
-
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
-
