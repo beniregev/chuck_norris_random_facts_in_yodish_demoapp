@@ -2,11 +2,11 @@ package com.chuck_norris_random_facts_in_yodish.controller;
 
 import com.chuck_norris_random_facts_in_yodish.model.Fact;
 import com.chuck_norris_random_facts_in_yodish.service.FactService;
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -64,5 +64,40 @@ public class FactController {
     @RequestMapping("/fact/createDemo")
     public String createDemo(@RequestParam String text) {
         return text;
+    }
+
+    /**
+     * Delete a specific {@link Fact} resource. This request I added to delete facts which I added during my development.
+     * @param factId of the fact to delete.
+     * @return {@link Fact} resource taht was deletedd/removed.
+     */
+    @CrossOrigin
+    @DeleteMapping("/fact/delete/{factId}")
+    //@RequestMapping(value="/delete/{factId}", method=RequestMethod.DELETE)
+    public Fact deleteById(@PathVariable String factId) {
+        System.out.println("FactController.deleteById(" + factId + ")");
+        Fact fact = factService.deleteById(factId);
+        System.out.println("FactController.deleteById(" + factId + ") = " + fact);
+        return fact;
+    }
+
+    @CrossOrigin
+    @PostMapping("/fact/createFactInYodish")
+    public ResponseEntity createYodishTextFromRandomFact() {
+        System.out.println("FactController.createYodishTextFromRandomFact()");
+        FactServiceResponseEntity response = factService.createYodishTextFromRandomFact();
+        System.out.println("FactController.createYodishTextFromRandomFact() returned: " + response);
+
+        ResponseEntity responseEntity;
+        if (response.getStatusCode().value() < 200 || response.getStatusCode().value() > 299) {
+            //  Error / Exception
+            responseEntity = new ResponseEntity<>(response.getStatusMessage(), response.getStatusCode());
+        } else {
+            Gson gson = new Gson();
+            String jsonFacts = gson.toJson(response.getFacts());
+            System.out.println("jsonFacts = " + jsonFacts);
+            responseEntity = new ResponseEntity<>(jsonFacts, response.getStatusCode());
+        }
+        return responseEntity;
     }
 }
