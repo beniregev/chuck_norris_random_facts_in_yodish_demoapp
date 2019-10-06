@@ -4,7 +4,6 @@ import com.chuck_norris_random_facts_in_yodish.model.Fact;
 import com.chuck_norris_random_facts_in_yodish.service.FactService;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
