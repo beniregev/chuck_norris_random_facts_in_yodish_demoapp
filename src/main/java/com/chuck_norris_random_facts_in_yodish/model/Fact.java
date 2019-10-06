@@ -21,6 +21,10 @@ public class Fact {
         return id;
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getText() {
         return text;
     }
