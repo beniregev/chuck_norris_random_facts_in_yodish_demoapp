@@ -8,7 +8,7 @@
         <version>2.1.8.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.иутшкупум</groupId>
+    <groupId>com.beniregev</groupId>
     <artifactId>chuck_norris_random_facts_in_yodish</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>chuck-norris-random-facts-in-yodish</name>
