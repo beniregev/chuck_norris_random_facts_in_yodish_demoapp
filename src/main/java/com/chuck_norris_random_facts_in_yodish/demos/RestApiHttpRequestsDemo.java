@@ -15,6 +15,10 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Demonstrating and testing the flow of getting a random Chuck Norris fact, translating it to Yodish (language spoken by Master Yoda) and creating a new {@link Fact} resource in {@code MongoDB} schema.
+ * @author Binyamin (Benny) Regev     email: beniregev@gmail.com
+ */
 public class RestApiHttpRequestsDemo {
     public static final String USER_AGENT = "Mozilla/5.0";
 
@@ -97,7 +101,7 @@ public class RestApiHttpRequestsDemo {
             conn.setRequestMethod( "POST" );
             conn.setDoOutput( true );
             conn.setInstanceFollowRedirects( false );
-//            conn.setRequestProperty( "User-Agent", RestApiHttpRequestsDemo.USER_AGENT);
+            //conn.setRequestProperty( "User-Agent", RestApiHttpRequestsDemo.USER_AGENT);
             //conn.setRequestProperty("Content-Type", "application/json; utf-8");
             conn.setRequestProperty( "Content-Type", "application/x-www-form-urlencoded");
             conn.setRequestProperty( "charset", "utf-8");
@@ -194,12 +198,12 @@ public class RestApiHttpRequestsDemo {
         String responseJson2 = demo.sendPostRequest(postTranslateToYodishUrl, postTranslateToYodishParams);
         System.out.println("response JSON #2 = " + responseJson2);
         /*  {
-         *      "success": { "total": 1 },
-         *      "contents": {
-         *          "translated": "After years of rigorous and physically demanding testing,Proved that chuck norris was stronger than chuck norris, it was. ",
-         *          "text": "After years of rigorous and physically demanding testing, it was proved that Chuck Norris was stronger than Chuck Norris.",
-         *          "translation": "yoda"
-         *      }
+                "success": { "total": 1 },
+                "contents": {
+                    "translated": "After years of rigorous and physically demanding testing,Proved that chuck norris was stronger than chuck norris, it was. ",
+                    "text": "After years of rigorous and physically demanding testing, it was proved that Chuck Norris was stronger than Chuck Norris.",
+                    "translation": "yoda"
+                }
          *  }
          */
         obj = new JSONObject(responseJson2);
@@ -240,11 +244,12 @@ public class RestApiHttpRequestsDemo {
         }
         System.out.println("-----------------------------------------------------------------------------------------------------------------------");
         //  endregion
+
         /*  {
-         *      "id":"5d98f32e568c8a39b0509b96",
-         *      "text":"On water,  jesus can walk,Chuck norris can run. ",
-         *      "createdOn":"2019-10-05"
-         *  }
+                "id":"5d98f32e568c8a39b0509b96",
+                "text":"On water,  jesus can walk,Chuck norris can run. ",
+                "createdOn":"2019-10-05"
+            }
          */
         obj = new JSONObject(responseJson3);
         String factId = obj.getString("id");
@@ -261,7 +266,5 @@ public class RestApiHttpRequestsDemo {
         Gson gson = new Gson();
         String jsonFacts = gson.toJson(facts);
         System.out.println("jsonFacts = " + jsonFacts);
-
-        //return new FactServiceResponseEntity(HttpStatus.CREATED,"Created", facts);
     }
 }
